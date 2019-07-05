@@ -23,6 +23,8 @@ func (t *Tcp) Decode(data []byte) {
   t.Offset = uint((data[12] >> 4) * 4)
   t.PortSrc = binary.BigEndian.Uint16(data[0:2])
   t.PortDst = binary.BigEndian.Uint16(data[2:4])
+  r := NewRaw(data[t.Offset:])
+  t.Data = &r
 }
 
 func (t *Tcp) String() string {
