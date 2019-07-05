@@ -36,6 +36,8 @@ func (e *Ethernet) Decode(data []byte) {
       e.Data = &i
     case 0x86DD:
       // IPv6
+      i := NewIpv6(data[14:])
+      e.Data = &i
   }
 }
 
