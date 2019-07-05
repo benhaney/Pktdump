@@ -34,6 +34,8 @@ func (i *Ipv4) Decode(data []byte) {
       i.Data = &t
     case 0x11:
       // UDP
+      u := NewUdp(data[i.Ihl:])
+      i.Data = &u
   }
 }
 
