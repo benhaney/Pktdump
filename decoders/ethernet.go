@@ -1,6 +1,7 @@
 package decoders
 
 import (
+  "pktdump/utils"
   "encoding/binary"
   "strings"
   "fmt"
@@ -47,8 +48,8 @@ func (e *Ethernet) String() string {
 func (e *Ethernet) Append(str *strings.Builder, indent int) {
   ind := strings.Repeat(" ", indent)
   str.WriteString(fmt.Sprintf("%s== Begin Ethernet ==\n", ind))
-  str.WriteString(fmt.Sprintf("%sMAC (dst): %s\n", ind, fmtMac(e.MacDst)))
-  str.WriteString(fmt.Sprintf("%sMAC (src): %s\n", ind, fmtMac(e.MacSrc)))
+  str.WriteString(fmt.Sprintf("%sMAC (dst): %s\n", ind, utils.FmtMac(e.MacDst)))
+  str.WriteString(fmt.Sprintf("%sMAC (src): %s\n", ind, utils.FmtMac(e.MacSrc)))
   str.WriteString(fmt.Sprintf("%sEthertype: %#04x\n", ind, e.Ethertype))
   e.Data.Append(str, indent + 2)
 }

@@ -1,6 +1,7 @@
 package decoders
 
 import (
+  "pktdump/utils"
   "strings"
   "fmt"
 )
@@ -46,7 +47,7 @@ func (i *Ipv4) Append(str *strings.Builder, indent int) {
   ind := strings.Repeat(" ", indent)
   str.WriteString(fmt.Sprintf("%s== Begin IPv4 ==\n", ind))
   str.WriteString(fmt.Sprintf("%sTTL: %d\n", ind, i.Ttl))
-  str.WriteString(fmt.Sprintf("%sIP Address (src): %s\n", ind, fmtIpv4(i.IpSrc)))
-  str.WriteString(fmt.Sprintf("%sIP Address (dst): %s\n", ind, fmtIpv4(i.IpDst)))
+  str.WriteString(fmt.Sprintf("%sIP Address (src): %s\n", ind, utils.FmtIpv4(i.IpSrc)))
+  str.WriteString(fmt.Sprintf("%sIP Address (dst): %s\n", ind, utils.FmtIpv4(i.IpDst)))
   i.Data.Append(str, indent + 2)
 }
