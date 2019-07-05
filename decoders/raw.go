@@ -27,7 +27,7 @@ func (r *Raw) String() string {
 
 func (r *Raw) Append(str *strings.Builder, indent int) {
   ind := strings.Repeat(" ", indent)
-  str.WriteString(fmt.Sprintf("%s== Begin Raw ==\n", ind))
-  str.WriteString(fmt.Sprintf("%s%s\n", ind, string(r.Data)))
+  str.WriteString(fmt.Sprintf("%s== Begin Raw ==\n\n", ind))
+  str.WriteString(fmt.Sprintf("%s\n\n", string(r.Data)))
   str.WriteString(fmt.Sprintf("%s== End Raw ==\n", ind))
 }
