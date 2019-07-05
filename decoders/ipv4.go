@@ -29,6 +29,8 @@ func (i *Ipv4) Decode(data []byte) {
   switch i.Protocol {
     case 0x06:
       // TCP
+      t := NewTcp(data[i.Ihl:])
+      i.Data = &t
     case 0x11:
       // UDP
   }
