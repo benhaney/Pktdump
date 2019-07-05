@@ -31,6 +31,8 @@ func (e *Ethernet) Decode(data []byte) {
   switch e.Ethertype {
     case 0x0800:
       // IPv4
+      i := NewIpv4(data[14:])
+      e.Data = &i
     case 0x86DD:
       // IPv6
   }
